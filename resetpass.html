@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Divine_puja_astro/bootstrap-5.3.8-dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<style>
+    .header {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+    }
+
+    .top-logo img {
+        height: 48px;
+
+    }
+
+    .menu a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    .menu a:hover {
+        color: #1b1b1b;
+        position: relative;
+    }
+
+    .menu a.hover::after {
+        background-color: #1b1b1b !important;
+        position: absolute !important;
+        bottom: 0px !important;
+        content: "" !important;
+        height: 2px !important;
+        width: 0% !important;
+        left: 0 !important;
+        transition: width .33s linear !important;
+    }
+
+    .menu a.hover:hover::after {
+        width: 50% !important;
+    }
+
+    #btn-profile {
+        font-size: 1.50rem !important;
+    }
+
+    .btn-hide {
+        display: none;
+    }
+
+    .heading h6 {
+        font-size: 14px;
+        font-weight: 700;
+        color: grey;
+    }
+
+    .carousel-item img {
+        /* height: 100% !important; */
+        aspect-ratio: 33 / 9;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+
+    }
+
+    /* MOBILE */
+    @media (max-width: 991px) {
+
+        #mobileMenu {
+            display: none;
+            flex-direction: column;
+            background: #fff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #mobileMenu.show {
+            display: flex;
+        }
+
+        .menu a {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-logo img {
+            height: 45px;
+            /* apni requirement ke hisab se */
+            max-width: 100%;
+        }
+
+        .top-logo {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8px 12px;
+            background: #fff;
+        }
+
+        .mobile-header img {
+            height: 40px;
+        }
+
+        .menu {
+            position: fixed;
+            z-index: 1000;
+            width: 90%;
+        }
+
+
+        .menu-toggle {
+            position: absolute;
+            left: 10px;
+        }
+    }
+
+    #ex1 {
+        position: fixed;
+        top: 110px !important;
+        left: 0px !important;
+        z-index: 60;
+        width: 100vw;
+        background-color: #fff;
+    }
+
+    .text {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .text a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    .text a:hover {
+        color: rgb(34, 34, 34);
+    }
+
+
+    .text a.hover::after {
+        background-color: rgb(34, 34, 34) !important;
+        position: absolute !important;
+        bottom: -5px !important;
+        content: "" !important;
+        height: 2px !important;
+        width: 0% !important;
+        left: 0 !important;
+        transition: width .33s linear !important;
+    }
+
+    .text a.hover:hover::after {
+        width: 50% !important;
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            width: 100% !important;
+            padding: 0 15px;
+        }
+
+        /* .text {
+            flex-direction: column;
+            gap: 10px !important;
+            align-items: center;
+            text-align: center;
+        } */
+
+        .form-floating label {
+            font-size: 14px;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .link-lost a {
+            font-size: 13px;
+        }
+    }
+
+    .footer {
+        background: #c65b6b;
+        color: #fff;
+        padding: 50px 30px 0;
+        font-family: "Jost", sans-serif;
+        font-size: 0.775rem;
+        font-weight: 400;
+        line-height: 1.7143;
+    }
+
+    .footer-container {
+        max-width: 1300px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 30px;
+    }
+
+    .footer-logo {
+        width: 160px;
+        margin-bottom: 15px;
+        background-color: azure;
+    }
+
+    .footer-col h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .footer-col ul li a:hover {
+        opacity: 0.8;
+    }
+
+    /* Contact Icons */
+    .contact-list li {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .contact-list svg {
+        width: 18px;
+        height: 18px;
+        fill: #fff;
+        flex-shrink: 0;
+        margin-top: 4px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-logo {
+            width: 140px;
+
+        }
+
+    }
+</style>
+
+<body>
+    <div class="header">
+        <div class="top-logo mobile-header text-center">
+            <button class="btn menu-toggle d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mobileMenu">
+                <i class="bi bi-list fs-2"></i>
+            </button>
+            <img src="../logo_divine.svg" alt="logo">
+        </div>
+
+
+        <div class="container-fluid px-4">
+            <div class="row align-items-center py-2">
+                <div class="col-lg-9">
+                    <!-- <button class="btn menu-toggle d-lg-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mobileMenu" aria aria-expanded="false">
+                        <i class="bi bi-list fs-2"></i>
+                    </button> -->
+                    <div class="menu collapse gap-4 d-lg-flex mt-3 mt-lg-0 " id="mobileMenu">
+                        <a href="../Divine_puja_astro/index.html" class="hover">Home</a>
+                        <a href="../Divine_puja_astro/CART/Contactastro.html" class="hover">Contact Astrologer</a>
+                        <a href="../Divine_puja_astro/CART/Gamestone.html" class="hover">Gemstone</a>
+                        <a href="../Divine_puja_astro/CART/Divineyantra.html" class="hover">Divine Yantra</a>
+                        <a href="../Divine_puja_astro/CART/Bracelets.html" class="hover">Bracelets</a>
+                        <a href="../Divine_puja_astro/CART/Pendents.html" class="hover">Pendants</a>
+                        <a href="../Divine_puja_astro/login.html" class="hover">Account</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="d-lg-flex justify-content-end gap-3 align-items-center d-none">
+                        <button data-bs-target="#ex1" class="btn" data-bs-toggle="collapse" id="btn-search">
+                            <i class="bi bi-search fs-5"></i>
+                        </button>
+                        <button class="btn" id="btn-profile" onclick="window.location.href='login.html'">
+                            <i class="bi bi-person"></i>
+                        </button>
+                        <!-- <a href="login.html" >
+                            <i class="bi bi-person"></i>
+                        </a> -->
+                        <a href="#" class="position-relative text-dark">
+                            <i class="bi bi-heart fs-5"></i>
+                            <span class="position-absolute top-100 start-100 translate-middle
+                        badge rounded-circle bg-danger">
+                                0
+                            </span>
+                        </a>
+
+                        <a href="" class="position-relative text-dark ms-4" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvas1">
+                            <i class="bi bi-bag fs-5"></i>
+                            <span class="position-absolute top-100 start-100 translate-middle
+                        badge rounded-circle bg-danger">
+                                0
+                            </span>
+                        </a>
+                        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="static"
+                            tabindex="-1" id="offcanvas1">
+                            <div class="offcanvas-header d-flex align-items-center mt-4">
+                                <div class="offcanvas-title ">
+                                    <h3 class="text-uppercase fs-6 mb-0"> SHOPPING (0)</h3>
+                                </div>
+                                <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+                            </div>
+                            <div class="offcanvvas-body ">
+                                <div>
+                                    <p class="text-center mt-3">Your card is empty.</p>
+                                </div>
+                                <div class="body-footer p-5">
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="fs-base fw-medium">SUBTOTAL:</h6>
+                                        <span class="cart-subtotal fw-medium" id="cart-subtotal">₹0.00</span>
+                                    </div>
+                                    <a href="" class="btn btn-light mt-3 d-block">View Cart</a>
+                                    <a href="" class="btn btn-primary mt-3 d-block">Chekout</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="collapse p-4" id="ex1">
+            <div class="d-flex align-items-center flex-column">
+
+                <div class="heading text-center">
+                    <h6 class="p-4">WHAT ARE YOU LOOKING FOR ?</h6>
+                </div>
+                <div class="d-flex align-items-center w-75 border-bottom px-2">
+                    <input class="form-control-plaintext me-4" type="search" placeholder="Search" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-12 col-md-6 col-lg-4 mt-4">
+        <div class="text d-flex gap-4 mb-4">
+            <a href="#" class="position-relative  mt-4 fs-4">Reset Your Password</a>
+
+        </div>
+        <form action="">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Email address *</label>
+            </div>
+
+            <p class="mt-4 form-text">We will send you an email to reset your password</p>
+
+            <button class=" btn btn-dark w-100 mt-4 text-uppercase" type="submit">Submit</button>
+            <div class="customer-option mt-4 text-center">
+                <span class="text-secondary">Back to</span>
+                <a href="login.html" class="btn-text js-show-register">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer mt-4">
+        <div class="footer-container">
+
+            <!-- Logo & Address -->
+            <div class="footer-col">
+                <img src="../logo_divine.svg" alt="Divine Puja Astro" class="footer-logo">
+
+                <ul class="contact-list">
+                    <li>
+                        <!-- Location SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                        </svg>
+                        E-3 Ishwar Ami Krupa Society,
+                        Meera Nagar, Vejalpur,
+                        Ahmedabad, Gujarat – 380051
+                    </li>
+
+                    <li>
+                        <!-- Email SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        divinepujaastro@gmail.com
+                    </li>
+
+                    <li>
+                        <!-- Phone SVG -->
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.59a1 1 0 01-.25 1.01l-2.2 2.19z" />
+                        </svg>
+                        +91 8511418350
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Refund & Cancellation</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+
+            <!-- Shop -->
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Rudraksha</a></li>
+                    <li><a href="#">Online Puja Services</a></li>
+                    <li><a href="#">Malas</a></li>
+                </ul>
+            </div>
+
+            <!-- Rudrakshah (ADDED) -->
+            <div class="footer-col">
+                <h4>Rudrakshah</h4>
+                <ul>
+                    <li><a href="#">One Mukhi Rudraksha</a></li>
+                    <li><a href="#">Nepalese Rudraksha</a></li>
+                    <li><a href="#">Indonesian Rudraksha</a></li>
+                </ul>
+            </div>
+
+            <!-- Online Puja -->
+            <div class="footer-col">
+                <h4>Online Puja Services</h4>
+                <ul>
+                    <li><a href="#">Gods & Goddesses Pujas</a></li>
+                    <li><a href="#">Special Pujas</a></li>
+                    <li><a href="#">Education Puja</a></li>
+                    <li><a href="#">Festival Pujas</a></li>
+                    <li><a href="#">Health Puja</a></li>
+                </ul>
+            </div>
+
+            <!-- Malas -->
+            <div class="footer-col">
+                <h4>Malas</h4>
+                <ul>
+                    <li><a href="#">Rudraksha Beads Malas</a></li>
+                    <li><a href="#">Combination Malas</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2024 Divine Puja Astro
+        </div>
+    </footer>
+
+
+
+    <script src="../Divine_puja_astro/bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        let btn_search = document.getElementById("btn-search")
+        btn_search.addEventListener("click", () => {
+            let icon = document.querySelector("#btn-search i");
+            // console.log(bi_serach[0].classList)
+
+            icon.classList.toggle("bi-search");
+            icon.classList.toggle("bi-x");
+
+        })
+
+    </script>
+</body>
+
+</html>
